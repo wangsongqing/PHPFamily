@@ -1,4 +1,4 @@
-#Yii2手册
+# Yii2手册
 ## Model 操作数据库 新增
     <?php
         $customer = new User();
