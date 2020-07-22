@@ -50,7 +50,7 @@
     		->with('orders')
     		->all();
     ?>
-## Model 操作数据库 原生SQL
+## Model 操作数据库 原生SQL查询
 	<?php
        $sql = 'SELECT * FROM User WHERE status=:status';
 	   $customers = User::findBySql($sql, [':status' => 1])->all();
@@ -76,7 +76,7 @@
 
 		User::deleteAll(['status' => 1]);
     ?>
-## Model 操作数据库 事务
+## Model 操作数据库 事务方式1
 	<?php
         $transaction = User::getDb()->beginTransaction();//开启事务
 		try {
@@ -87,6 +87,31 @@
 		} (\Throwable $e) {
 		    $transaction->rollBack();////回滚事务
 		    throw $e;
+		}
+    ?>
+## Model 操作数据库 事务方式2
+	<?php
+		$connection = new User();
+       // $connection其实是数据库连接
+		$transaction = $connection->beginTransaction();
+		try {
+			
+		    $connection->createCommand($sql1)->execute();
+		    $connection->createCommand($sql2)->execute();
+		    // ... executing other SQL statements ...
+		    $transaction->commit();
+		} catch (Exception $e) {
+		    $transaction->rollBack();
+		}
+    ?>
+## Model 操作数据库 事务方式3
+	<?php
+		$transaction = Yii::$app->db->beginTransaction();
+		try {
+		    // ... executing other SQL statements ...
+		    $transaction->commit();
+		} catch (\Exception $e) {
+		    $transaction->rollBack();
 		}
     ?>
 ## Model 其他
@@ -106,6 +131,11 @@ User::find()->exists();    此方法返回一个值指示是否包含查询结�
 User::find()->batch(10);  每次取 10 条数据 
 
 User::find()->each(10);  每次取 10 条数据， 迭代查询
+
+###执行原生DML语句
+$sql = "update user set name='zhangsan' where id='1'";
+
+$connection->createCommand($sql)->execute();
 
 ###获取当前程序执行的sql语句
 $query = User::find() ->where(['id'=>[1,2,3,4]) ->select(['username'])
