@@ -1,6 +1,7 @@
 # Yii2手册
 ## Model 操作数据库 新增
-    <?php
+```php
+
         $customer = new User();
 		$customer->name = 'Qiang';
 		$customer->save();
@@ -14,7 +15,7 @@
 		$customer = new Customer();
 		$customer->attributes = $values;
 		$customer->save();
-    ?>
+```
 ## Model 操作数据库 查询
     <?php
         //SELECT * FROM `User` WHERE `id` = 123 查询单条数据
@@ -51,13 +52,23 @@
     		->all();
     ?>
 ## Model 操作数据库 原生SQL查询
-	<?php
+```php
+
        $sql = 'SELECT * FROM User WHERE status=:status';
 	   $customers = User::findBySql($sql, [':status' => 1])->all();
 	   $customers = User::findBySql($sql, [':status' => 1])->one();
-    ?>
+
+		$db  = Yii::$app->db;
+		$sql = "select * from user";
+		$command = $db->createCommand($sql)->queryAll();//查询全部
+		$command = $db->createCommand($sql)->queryOne();//查询一条数据
+
+		$updateSql = "update user set username='wangsongqing'";
+		$db->createCommand($updateSql)->execute();//执行修改的添加的使用
+```
 ## Model 操作数据库 更新
- 	<?php
+```php
+
         $customer = User::findOne(123);
 		$customer->name = 'Qiang';
 		$customer->save();
@@ -68,7 +79,7 @@
 		$post = User::findOne(100); // +1 -1
 		// UPDATE `User` SET `view_count` = `view_count` + 1 WHERE `id` = 100
 		$post->updateCounters(['view_count' => 1]);
-    ?>
+```
 ## Model 操作数据库 删除
 	<?php
         $customer = User::findOne(123);
@@ -135,7 +146,7 @@ User::find()->each(10);  每次取 10 条数据， 迭代查询
 ###执行原生DML语句
 $sql = "update user set name='zhangsan' where id='1'";
 
-$connection->createCommand($sql)->execute();
+Yii::$app->db->createCommand($sql)->execute();
 
 ###获取当前程序执行的sql语句
 $query = User::find() ->where(['id'=>[1,2,3,4]) ->select(['username'])
