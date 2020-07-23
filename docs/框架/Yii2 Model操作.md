@@ -2,19 +2,19 @@
 ## Model 操作数据库 新增
 ```php
 
-        $customer = new User();
-		$customer->name = 'Qiang';
-		$customer->save();
+		$customer = new User();
+	$customer->name = 'Qiang';
+	$customer->save();
 
-		// 块赋值
-		$values = [
-    		'name' => 'James',
-    		'email' => 'james@example.com',
-		];
+	// 块赋值
+	$values = [
+		'name' => 'James',
+		'email' => 'james@example.com',
+	];
 
-		$customer = new Customer();
-		$customer->attributes = $values;
-		$customer->save();
+	$customer = new Customer();
+	$customer->attributes = $values;
+	$customer->save();
 ```
 ## Model 操作数据库 查询
     <?php
