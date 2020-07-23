@@ -1,5 +1,5 @@
-#常用SQL
-###DDL
+# 常用SQL
+### DDL
 **库的创建:**
 create database if not exists 数据库名;
 
