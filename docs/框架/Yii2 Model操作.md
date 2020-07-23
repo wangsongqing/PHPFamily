@@ -2,7 +2,7 @@
 ## Model 操作数据库 新增
 ```php
 
-		$customer = new User();
+	$customer = new User();
 	$customer->name = 'Qiang';
 	$customer->save();
 
@@ -69,16 +69,16 @@
 ## Model 操作数据库 更新
 ```php
 
-        $customer = User::findOne(123);
-		$customer->name = 'Qiang';
-		$customer->save();
-		
-		// UPDATE `customer` SET `status` = 1 WHERE `email` LIKE `%@example.com%`
-		User::updateAll(['status' => 1], ['like', 'email', '@example.com']);		
+    $customer = User::findOne(123);
+	$customer->name = 'Qiang';
+	$customer->save();
+	
+	// UPDATE `customer` SET `status` = 1 WHERE `email` LIKE `%@example.com%`
+	User::updateAll(['status' => 1], ['like', 'email', '@example.com']);		
 
-		$post = User::findOne(100); // +1 -1
-		// UPDATE `User` SET `view_count` = `view_count` + 1 WHERE `id` = 100
-		$post->updateCounters(['view_count' => 1]);
+	$post = User::findOne(100); // +1 -1
+	// UPDATE `User` SET `view_count` = `view_count` + 1 WHERE `id` = 100
+	$post->updateCounters(['view_count' => 1]);
 ```
 ## Model 操作数据库 删除
 	<?php
