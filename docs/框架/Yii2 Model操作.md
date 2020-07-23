@@ -48,7 +48,7 @@ $count = User::find()->where(['status' => 1])->andWhere(['not in','id',[88,98]])
 $customers = Customer::find()
 	->select('customer.*')
 	->leftJoin('order', '`order`.`customer_id` = `customer`.`id`')
-		->where(['order.status' => Order::STATUS_ACTIVE])
+	->where(['order.status' => Order::STATUS_ACTIVE])
 	->with('orders')
 	->all();
 ```

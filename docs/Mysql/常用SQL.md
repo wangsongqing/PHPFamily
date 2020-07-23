@@ -2,11 +2,15 @@
 ### DDL
 **库的创建:**
 
-	create database if not exists 数据库名;
+```mysql
+create database if not exists 数据库名;
+```
 
 **字符集修改:**
 
-	alter database 库名 character set 字符集；
+```mysql
+alter database 库名 character set 字符集；
+```
 
 **库删除:**
 
@@ -14,7 +18,7 @@
 
 **创建表:**
 
-``` mysql
+```mysql
 
 	CREATE TABLE `scs_group_send` (
 	
