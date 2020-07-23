@@ -54,22 +54,22 @@
 ## Model 操作数据库 原生SQL查询
 ```php
 
-       $sql = 'SELECT * FROM User WHERE status=:status';
-	   $customers = User::findBySql($sql, [':status' => 1])->all();
-	   $customers = User::findBySql($sql, [':status' => 1])->one();
-
-		$db  = Yii::$app->db;
-		$sql = "select * from user";
-		$command = $db->createCommand($sql)->queryAll();//查询全部
-		$command = $db->createCommand($sql)->queryOne();//查询一条数据
-
-		$updateSql = "update user set username='wangsongqing'";
-		$db->createCommand($updateSql)->execute();//执行修改的添加的使用
+	$sql = 'SELECT * FROM User WHERE status=:status';
+	$customers = User::findBySql($sql, [':status' => 1])->all();
+	$customers = User::findBySql($sql, [':status' => 1])->one();
+	
+	$db  = Yii::$app->db;
+	$sql = "select * from user";
+	$command = $db->createCommand($sql)->queryAll();//查询全部
+	$command = $db->createCommand($sql)->queryOne();//查询一条数据
+	
+	$updateSql = "update user set username='wangsongqing'";
+	$db->createCommand($updateSql)->execute();//执行修改的添加的使用
 ```
 ## Model 操作数据库 更新
 ```php
 
-    $customer = User::findOne(123);
+   	$customer = User::findOne(123);
 	$customer->name = 'Qiang';
 	$customer->save();
 	
