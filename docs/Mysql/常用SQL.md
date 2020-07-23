@@ -1,13 +1,11 @@
 # 常用SQL
 ### DDL
 **库的创建:**
-
 ```mysql
 create database if not exists 数据库名;
 ```
 
 **字符集修改:**
-
 ```mysql
 alter database 库名 character set 字符集；
 ```
