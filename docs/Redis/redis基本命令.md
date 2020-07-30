@@ -4,11 +4,23 @@
 
 $redis->set('library', 'predis');
 $retval = $redis->get('library');
+$redis->mget(['key1', 'key2', 'key3']); // 一次获取多个值
+$redis->mset(['k1'=>'1','k2'=>'2','k3'=>'3']); #用MSET一次储存多个值
 echo $retval; //显示 'predis'
 
 //setex set一个存储时效
 $redis->setex('str', 10, 'bar'); //表示存储有效期为10秒
- 
+
+#截取
+$redis->set('greeting', "hello, my friend");
+$redis->getrange('greeting', 0, 4).'<br>';  返回索引0-4的字符，包括4。 //输出 "hello"
+
+# 设置key的生存时间
+$redis->set('name','ikodota'); # 设置一个key
+$redis->expire('name',30);  # 设置生存时间为30秒 //return (integer) 1
+echo $redis->get('name'); //return ikodota
+echo $redis->ttl('name'); //(integer) 25 剩余过期时间
+
 //setnx/msetnx相当于add操作,不会覆盖已有值
 $redis->setnx('foo',12); //true
 $redis->setnx('foo',34); //false
@@ -20,8 +32,8 @@ $redis->getset('foo',56);//返回34
 $redis->incr('foo'); //foo为57
 $redis->incrby('foo',2); //foo为59
  
-//exists检测是否存在某值
-$redis->exists('foo');//true
+//exists检测是否存在某个key
+$redis->exists('key1');//1 存在  0不存在
  
 //del 删除
 $redis->del('foo');//true
