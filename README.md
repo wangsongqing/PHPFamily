@@ -6,4 +6,4 @@
 + **MySQL**
 	+ [常用SQL命令](https://github.com/wangsongqing/PHPFamily/blob/master/docs/Mysql/%E5%B8%B8%E7%94%A8SQL.md "常用SQL命令.md")
 + **Redis**
-   + [Redis常用命令](https://github.com/wangsongqing/PHPFamily/blob/master/docs/Redis/redis%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4.md")
+   + [Redis常用命令](https://github.com/wangsongqing/PHPFamily/blob/master/docs/Redis/redis%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4.md "Redis常用命令.md")
