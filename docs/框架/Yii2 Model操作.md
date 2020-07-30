@@ -134,26 +134,18 @@ try {
 ```php
 
 User::find()->average();    此方法返回指定列的平均值；
-
 User::find()->min();    此方法返回指定列的最小值 ；
-
 User::find()->max();    此方法返回指定列的最大值 ；
-
 User::find()->scalar();    此方法返回值的第一行第一列的查询结果；
-
 User::find()->column();    此方法返回查询结果中的第一列的值；
-
 User::find()->exists();    此方法返回一个值指示是否包含查询结果的数据行；
-
 User::find()->batch(10);  每次取 10 条数据 
-
 User::find()->each(10);  每次取 10 条数据， 迭代查询
 ```
 ###执行原生DML语句
 ```php
 
 $sql = "update user set name='zhangsan' where id='1'";
-
 Yii::$app->db->createCommand($sql)->execute();
 ```
 ###获取当前程序执行的sql语句
@@ -164,6 +156,5 @@ $query = User::find() ->where(['id'=>[1,2,3,4]) ->select(['username'])
 // 输出SQL语句
 $commandQuery = clone $query;
 echo $commandQuery->createCommand()->getRawSql();
-
 $users = $query->all();
 ```
