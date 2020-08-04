@@ -17,9 +17,6 @@ $excel->download($data, '这是一个测试');
 echo 'ok';
 /**
  * 生成excel文件操作
- *
- * @author wesley wu
- * @date 2013.12.9
  */
 class Excel
 {
