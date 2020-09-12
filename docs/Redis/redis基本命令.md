@@ -18,7 +18,7 @@ $redis->getrange('greeting', 0, 4).'<br>';  返回索引0-4的字符，包括4�
 # 设置key的生存时间
 $redis->set('name','ikodota'); # 设置一个key
 $redis->expire('name',30);  # 设置生存时间为30秒 //return (integer) 1
-echo $redis->get('name'); //return ikodota 
+echo $redis->get('name'); //return ikodota
 echo $redis->ttl('name'); //(integer) 25 剩余过期时间
 
 //setnx/msetnx相当于add操作,不会覆盖已有值
